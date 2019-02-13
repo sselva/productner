@@ -26,8 +26,9 @@ def main(argv):
                     product = yaml.load(line, Loader=Loader)
                     title, brand, categories = product['title'], product['brand'], product['categories']
                     description = product['description'] if 'description' in product else ''
-                    categories = ' / '.join([item for sublist in categories for item in sublist])
-                    out.writerow([title, brand, description, categories])
+                    for category in categories:
+                        category = ' > '.join([item for sublist in category for item in sublist])
+                        out.writerow([title, brand, description, category])
                     good += 1
                 except Exception as e:
                     print (line)
