@@ -27,7 +27,7 @@ def main(argv):
                     title, brand, categories = product['title'], product['brand'], product['categories']
                     description = product['description'] if 'description' in product else ''
                     for category in categories:
-                        category = ' > '.join([item for sublist in category for item in sublist])
+                        category = ' > '.join([item for item in category])
                         out.writerow([title, brand, description, category])
                     good += 1
                 except Exception as e:
